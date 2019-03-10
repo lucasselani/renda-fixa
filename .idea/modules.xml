@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/EncontreSuaRendaFixa.iml" filepath="$PROJECT_DIR$/EncontreSuaRendaFixa.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/renda-fixa.iml" filepath="$PROJECT_DIR$/renda-fixa.iml" />
     </modules>
   </component>
 </project>

@@ -33,11 +33,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.core:core-ktx:1.1.0-alpha04'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-
-    // recycler
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
+
+    //jetbrains
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.9.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
 
     // architecture
     implementation 'android.arch.lifecycle:runtime:1.1.1'
@@ -46,10 +48,18 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation 'android.arch.lifecycle:reactivestreams:1.1.1'
 
-    // retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    // dagger
+    kapt 'com.google.dagger:dagger-compiler:2.15'
+    implementation 'com.google.dagger:dagger-android:2.15'
+    implementation 'com.google.dagger:dagger-android-support:2.15'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
+
+    //ktor
+    implementation 'io.ktor:ktor-client:1.0.0'
+    implementation 'io.ktor:ktor-client-json:1.0.0'
+    implementation 'io.ktor:ktor-client-okhttp:1.0.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
