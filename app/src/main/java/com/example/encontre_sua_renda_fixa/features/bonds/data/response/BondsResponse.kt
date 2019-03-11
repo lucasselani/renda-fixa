@@ -5,6 +5,6 @@ import com.squareup.moshi.Json
 
 class BondsResponse {
 
-    @field:Json(name = "bonds")
+    @field:Json(name = "view_holder_bonds")
     var bonds: List<Bond> = emptyList()
 }

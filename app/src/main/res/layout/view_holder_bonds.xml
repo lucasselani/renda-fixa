@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android" 
+        xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="bond"
                   type="com.example.encontre_sua_renda_fixa.features.bonds.domain.model.Bond" />
     </data>
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical"
-                  android:padding="8dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
         <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/issuer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/issuer"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 android:text="@{bond.issuer}"/>
 
         <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/liquidity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/liquidity"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/issuer"
                 android:text="@{bond.liquidity}"/>
 
         <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/maturityDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/maturityDate"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/liquidity"
                 android:text="@{bond.maturityDate}"/>
 
         <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/index"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/interest"
-                android:text="@{bond.interest}"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/maturityDate"
+                android:text="@{bond.index}"/>
 
         <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dealer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/dealer"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/index"
                 android:text="@{bond.dealer}"/>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

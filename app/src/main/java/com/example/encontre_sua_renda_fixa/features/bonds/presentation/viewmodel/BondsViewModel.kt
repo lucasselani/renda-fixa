@@ -13,9 +13,6 @@ class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
 
     var bonds: MutableLiveData<State<List<Bond>>> = MutableLiveData()
 
-    val loading: Boolean
-        get() = bonds.isLoading()
-
     fun list() {
         bonds.loading(true)
         getBonds(UseCase.None()) {
@@ -24,4 +21,5 @@ class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
         }
     }
 
+    fun loading() = bonds.isLoading()
 }

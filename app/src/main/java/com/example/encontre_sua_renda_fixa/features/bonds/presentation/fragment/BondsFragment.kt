@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.encontre_sua_renda_fixa.R
@@ -24,7 +25,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class BondsFragment : BaseFragment() {
 
     private val viewModel: BondsViewModel by viewModel()
-    private val adapter: BondsAdapter by inject()
+    private val adapter: BondsAdapter by lazy { BondsAdapter() }
 
     companion object {
         val TAG = BondsFragment::class.qualifiedName
@@ -36,6 +37,7 @@ class BondsFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding: FragmentBondsBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_bonds, container,false)
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
         return binding.root
     }
@@ -51,17 +53,18 @@ class BondsFragment : BaseFragment() {
     }
 
     private fun setupAdapter() {
+        val layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(baseActivity,
-            RecyclerView.VERTICAL,
-            false)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.setHasFixedSize(true)
+        recyclerView.addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
     }
 
     private fun setupViewModel() {
         viewModel.list()
         viewModel.bonds.observe(this, Observer {
             when(it) {
-                is State.Success -> adapter.notifyBonds(it.data)
+                is State.Success -> adapter.update(it.data)
                 is State.Progress -> handleProgress(it.loading)
                 is State.Error -> baseActivity.showSnackbar(rootView, R.string.list_error)
             }

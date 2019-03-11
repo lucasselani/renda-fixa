@@ -17,6 +17,5 @@ private val bondsApi = BaseNetworkModule.createService(baseUrl).create(BondsApi:
 
 val bondsModule = module {
     factory { GetBonds(BondsService(bondsApi, androidContext())) }
-    factory { BondsAdapter(emptyList()) }
     viewModel { BondsViewModel(get()) }
 }
