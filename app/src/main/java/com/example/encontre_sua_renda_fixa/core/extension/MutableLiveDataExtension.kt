@@ -19,3 +19,11 @@ fun <T> MutableLiveData<State<T>>.success(data: T?) =
         loading(false)
         this.value = State.success(data)
     }
+
+fun <T> MutableLiveData<State<T>>.isLoading(): Boolean {
+    var loading = false
+    this.value?.let {
+        if(it is State.Progress) loading = true
+    }
+    return loading
+}

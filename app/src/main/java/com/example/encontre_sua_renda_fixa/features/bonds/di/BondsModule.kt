@@ -3,7 +3,6 @@ package com.example.encontre_sua_renda_fixa.features.bonds.di
 import com.example.encontre_sua_renda_fixa.features.bonds.constants.baseUrl
 import com.example.encontre_sua_renda_fixa.core.di.network.BaseNetworkModule
 import com.example.encontre_sua_renda_fixa.features.bonds.data.api.BondsApi
-import com.example.encontre_sua_renda_fixa.features.bonds.data.repository.BondsRepository
 import com.example.encontre_sua_renda_fixa.features.bonds.data.service.BondsService
 import com.example.encontre_sua_renda_fixa.features.bonds.domain.usecase.GetBonds
 import com.example.encontre_sua_renda_fixa.features.bonds.presentation.adapter.BondsAdapter
@@ -18,6 +17,6 @@ private val bondsApi = BaseNetworkModule.createService(baseUrl).create(BondsApi:
 
 val bondsModule = module {
     factory { GetBonds(BondsService(bondsApi, androidContext())) }
-    factory { BondsAdapter(emptyList(), androidContext()) }
+    factory { BondsAdapter(emptyList()) }
     viewModel { BondsViewModel(get()) }
 }

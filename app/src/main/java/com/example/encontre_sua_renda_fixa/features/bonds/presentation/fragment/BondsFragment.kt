@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,7 @@ import com.example.encontre_sua_renda_fixa.core.extension.gone
 import com.example.encontre_sua_renda_fixa.core.extension.visible
 import com.example.encontre_sua_renda_fixa.core.functional.State
 import com.example.encontre_sua_renda_fixa.core.view.BaseFragment
+import com.example.encontre_sua_renda_fixa.databinding.FragmentBondsBinding
 import com.example.encontre_sua_renda_fixa.features.bonds.presentation.adapter.BondsAdapter
 import com.example.encontre_sua_renda_fixa.features.bonds.presentation.viewmodel.BondsViewModel
 import kotlinx.android.synthetic.main.fragment_bonds.*
@@ -31,8 +33,12 @@ class BondsFragment : BaseFragment() {
         fun newInstance() = BondsFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
-        inflater.inflate(R.layout.fragment_bonds, container, false)!!
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val binding: FragmentBondsBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_bonds, container,false)
+        binding.viewModel = viewModel
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
