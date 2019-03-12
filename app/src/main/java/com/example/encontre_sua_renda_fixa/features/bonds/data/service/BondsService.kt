@@ -12,7 +12,5 @@ class BondsService(private val bondsApi: BondsApi,
                    private val context: Context): BondsRepository() {
 
     override fun bonds(): State<List<BondDomainModel>> =
-            request(context, bondsApi.bonds(), { it.mapTo() },
-                BondsResponse()
-            )
+            request(context, bondsApi.bonds(), { it.mapTo() }, BondsResponse())
 }

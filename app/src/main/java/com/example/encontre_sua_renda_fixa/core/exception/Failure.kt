@@ -6,8 +6,9 @@ package com.example.encontre_sua_renda_fixa.core.exception
  */
 sealed class Failure {
     object NetworkConnection : Failure()
-    object ServerError : Failure()
-
+    data class ServerError(val code: Int?) : Failure()
     /** * Extend this class for feature specific failures.*/
     abstract class FeatureFailure: Failure()
+
+    fun errorCode() = if(this is Failure.ServerError) this.code else null
 }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.encontre_sua_renda_fixa.R
+import com.example.encontre_sua_renda_fixa.core.exception.Failure
 import com.example.encontre_sua_renda_fixa.core.extension.gone
 import com.example.encontre_sua_renda_fixa.core.extension.visible
 import com.example.encontre_sua_renda_fixa.core.functional.State
@@ -66,18 +67,29 @@ class BondsFragment : BaseFragment() {
             when(it) {
                 is State.Success -> adapter.update(it.data)
                 is State.Progress -> handleProgress(it.loading)
-                is State.Error -> baseActivity.showSnackbar(rootView, R.string.list_error)
+                is State.Error -> handleError(it.failure)
             }
         })
     }
 
     private fun handleProgress(loading: Boolean) {
+        swipeRefresh.isRefreshing = loading
         if(loading) {
             recyclerView.gone()
             shimmer.visible()
         } else {
             recyclerView.visible()
             shimmer.gone()
+        }
+    }
+
+    private fun handleError(failure: Failure?) {
+        when(failure) {
+            is Failure.NetworkConnection -> baseActivity.showSnackbar(rootView, R.string.no_internet)
+            is Failure.ServerError -> {
+                if(failure.code != null && failure.code == 500) viewModel.list()
+                else baseActivity.showSnackbar(rootView, R.string.list_error)
+            }
         }
     }
 }

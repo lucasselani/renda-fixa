@@ -15,11 +15,11 @@ abstract class BaseRepository {
                     val response = call.execute()
                     when (response.isSuccessful) {
                         true -> State.success(transform((response.body() ?: default)))
-                        false -> State.error(Failure.ServerError)
+                        false -> State.error(Failure.ServerError(response.code()))
                     }
                 } catch (exception: Throwable) {
-                    Log.wtf("API", "${exception.localizedMessage}\n${exception.message}")
-                    return State.error(Failure.ServerError)
+                    exception.printStackTrace()
+                    return State.error(Failure.ServerError(null))
                 }
             false, null -> State.error(Failure.NetworkConnection)
         }

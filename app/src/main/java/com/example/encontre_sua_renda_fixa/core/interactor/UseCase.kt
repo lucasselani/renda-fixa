@@ -1,5 +1,6 @@
 package com.example.encontre_sua_renda_fixa.core.interactor
 
+import com.example.encontre_sua_renda_fixa.core.exception.Failure
 import com.example.encontre_sua_renda_fixa.core.functional.State
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -18,10 +19,14 @@ abstract class UseCase<Type, in Params> where Type : Any {
 
     abstract suspend fun run(params: Params): State<Type>
 
-    operator fun invoke(params: Params, onResult: (State<Type>) -> Unit = {}) {
+    operator fun invoke(params: Params,
+                        onSuccess: ((Type?) -> Unit)? = null,
+                        onError: ((Failure?) -> Unit)? = null) {
         val job = GlobalScope.async(Dispatchers.Default) { run(params) }
-        GlobalScope.launch(Dispatchers.Main) { onResult(job.await()) }
+        GlobalScope.launch(Dispatchers.Main) {
+            val result = job.await()
+            if(result is State.Success) onSuccess?.invoke(result.data)
+            else if(result is State.Error) onError?.invoke(result.failure)
+        }
     }
-
-    class None
 }

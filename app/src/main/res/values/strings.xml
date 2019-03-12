@@ -2,4 +2,5 @@
     <string name="app_name">Encontre sua renda fixa</string>
     <string name="ok">OK</string>
     <string name="list_error">Opsss.. Aconteceu alguma coisa, tente novamente!</string>
+    <string name="no_internet">Parece que você está sem conexão com a internet :(</string>
 </resources>

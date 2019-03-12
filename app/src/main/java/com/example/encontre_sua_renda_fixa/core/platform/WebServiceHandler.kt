@@ -1,4 +1,4 @@
-package com.example.encontre_sua_renda_fixa.core.di.network
+package com.example.encontre_sua_renda_fixa.core.platform
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Base network module to be used to inject particular retrofit instance
  */
-object BaseNetworkModule {
+class WebServiceHandler {
     fun createService(url: String): Retrofit {
         return Retrofit.Builder()
             .baseUrl(url)

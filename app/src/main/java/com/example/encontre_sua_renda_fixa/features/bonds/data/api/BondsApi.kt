@@ -7,6 +7,6 @@ import com.example.encontre_sua_renda_fixa.features.bonds.data.model.Bond as Bon
 
 interface BondsApi {
 
-    @GET("view_holder_bonds")
+    @GET("bonds")
     fun bonds(): Call<BondsResponse>
 }
