@@ -9,6 +9,8 @@ data class Bond(
     var issuer: String = "",
     var liquidity: String = "",
     var isLiquidity: Boolean = false,
+    var encouraged: Boolean = false,
+    var qualified: Boolean = false,
     var maturityDays: Long = 0,
     var maturityDate: String = "",
     var interest: Double = 0.0,

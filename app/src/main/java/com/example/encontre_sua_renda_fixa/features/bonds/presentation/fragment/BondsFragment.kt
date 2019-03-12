@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.encontre_sua_renda_fixa.R
 import com.example.encontre_sua_renda_fixa.core.exception.Failure
 import com.example.encontre_sua_renda_fixa.core.extension.gone
@@ -21,12 +20,12 @@ import com.example.encontre_sua_renda_fixa.features.bonds.presentation.adapter.B
 import com.example.encontre_sua_renda_fixa.features.bonds.presentation.viewmodel.BondsViewModel
 import kotlinx.android.synthetic.main.fragment_bonds.*
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class BondsFragment : BaseFragment() {
 
-    private val viewModel: BondsViewModel by viewModel()
-    private val adapter: BondsAdapter by lazy { BondsAdapter() }
+    private val viewModel: BondsViewModel by sharedViewModel()
+    private val adapter: BondsAdapter by inject()
 
     companion object {
         val TAG = BondsFragment::class.qualifiedName
@@ -86,10 +85,7 @@ class BondsFragment : BaseFragment() {
     private fun handleError(failure: Failure?) {
         when(failure) {
             is Failure.NetworkConnection -> baseActivity.showSnackbar(rootView, R.string.no_internet)
-            is Failure.ServerError -> {
-                if(failure.code != null && failure.code == 500) viewModel.list()
-                else baseActivity.showSnackbar(rootView, R.string.list_error)
-            }
+            is Failure.ServerError -> baseActivity.showSnackbar(rootView, R.string.list_error)
         }
     }
 }

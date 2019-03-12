@@ -1,6 +1,7 @@
 package com.example.encontre_sua_renda_fixa.core.interactor
 
 import com.example.encontre_sua_renda_fixa.core.exception.Failure
+import com.example.encontre_sua_renda_fixa.core.functional.Either
 import com.example.encontre_sua_renda_fixa.core.functional.State
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -15,18 +16,13 @@ import kotlinx.coroutines.launch
  * By convention each [UseCase] implementation will execute its job in a background thread
  * (kotlin coroutine) and will post the result in the UI thread.
  */
-abstract class UseCase<Type, in Params> where Type : Any {
+abstract class UseCase<out Type, in Params> where Type : Any {
 
-    abstract suspend fun run(params: Params): State<Type>
+    abstract suspend fun run(params: Params): Either<Failure, Type>
 
     operator fun invoke(params: Params,
-                        onSuccess: ((Type?) -> Unit)? = null,
-                        onError: ((Failure?) -> Unit)? = null) {
+                        onResult: ((Either<Failure, Type>) -> Unit)? = {}) {
         val job = GlobalScope.async(Dispatchers.Default) { run(params) }
-        GlobalScope.launch(Dispatchers.Main) {
-            val result = job.await()
-            if(result is State.Success) onSuccess?.invoke(result.data)
-            else if(result is State.Error) onError?.invoke(result.failure)
-        }
+        GlobalScope.launch(Dispatchers.Main) { onResult?.invoke(job.await()) }
     }
 }

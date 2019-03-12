@@ -16,6 +16,12 @@ class Bond {
     @field:Json(name = "isLiquidity")
     var isLiquidity: Boolean = false
 
+    @field:Json(name = "incentivado")
+    var encouraged: Any? = null
+
+    @field:Json(name = "qualificado")
+    var qualified: Any? = null
+
     @field:Json(name = "maturity")
     var maturity: String = ""
 

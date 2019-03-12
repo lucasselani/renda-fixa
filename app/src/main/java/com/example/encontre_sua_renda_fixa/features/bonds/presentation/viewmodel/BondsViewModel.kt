@@ -3,12 +3,10 @@ package com.example.encontre_sua_renda_fixa.features.bonds.presentation.viewmode
 import androidx.lifecycle.MutableLiveData
 import com.example.encontre_sua_renda_fixa.core.exception.Failure
 import com.example.encontre_sua_renda_fixa.core.extension.error
-import com.example.encontre_sua_renda_fixa.core.extension.isLoading
 import com.example.encontre_sua_renda_fixa.core.extension.loading
 import com.example.encontre_sua_renda_fixa.core.extension.success
 import com.example.encontre_sua_renda_fixa.core.functional.State
-import com.example.encontre_sua_renda_fixa.core.interactor.None
-import com.example.encontre_sua_renda_fixa.core.interactor.UseCase
+import com.example.encontre_sua_renda_fixa.core.functional.None
 import com.example.encontre_sua_renda_fixa.core.view.BaseViewModel
 import com.example.encontre_sua_renda_fixa.features.bonds.domain.model.Bond
 import com.example.encontre_sua_renda_fixa.features.bonds.domain.usecase.GetBonds
@@ -20,7 +18,7 @@ class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
 
     fun list() {
         bonds.loading(true)
-        getBonds(None, ::handleSuccess, ::handleFailure)
+        getBonds(None) { it.either(::handleFailure, ::handleSuccess) }
     }
 
     private fun handleSuccess(data: List<Bond>?) {
