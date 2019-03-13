@@ -8,6 +8,7 @@ import com.lambreta.rendafixa.features.bonds.domain.repository.BondsRepository
 import com.lambreta.rendafixa.features.bonds.domain.usecase.GetBonds
 import com.lambreta.rendafixa.features.bonds.presentation.adapter.BondsAdapter
 import com.lambreta.rendafixa.features.bonds.presentation.adapter.DealersAdapter
+import com.lambreta.rendafixa.core.functional.OnViewInteraction
 import com.lambreta.rendafixa.features.bonds.presentation.viewmodel.BondsViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.koin.viewModel
@@ -28,7 +29,7 @@ val bondsModule = module {
 }
 
 val viewModule = module {
+    viewModel { BondsViewModel(get()) }
     single { BondsAdapter() }
     single { DealersAdapter() }
-    viewModel { BondsViewModel(get()) }
 }

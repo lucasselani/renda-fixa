@@ -2,7 +2,6 @@ package com.lambreta.rendafixa.core.platform
 
 import android.content.Context
 import com.lambreta.rendafixa.core.extension.networkInfo
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -30,7 +29,6 @@ class WebServiceHandler {
         return Retrofit.Builder()
             .baseUrl(url)
             .client(httpClient)
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }

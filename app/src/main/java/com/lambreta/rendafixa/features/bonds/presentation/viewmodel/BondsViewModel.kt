@@ -17,21 +17,21 @@ class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
     var bonds: MutableLiveData<State<List<Bond>>> = MutableLiveData()
     var filteredBonds: MutableLiveData<State<List<Bond>>> = MutableLiveData()
     var dealers: MutableLiveData<State<Map<String, List<Bond>>>> = MutableLiveData()
+    var clickedDealer: MutableLiveData<String> = MutableLiveData()
 
     private var tryAgain: Boolean = true
-    private var dealer: String? = null
 
     fun list() {
-        bonds.loading(true)
+        dealers.loading(true)
         getBonds(None) { it.either(::handleFailure, ::handleSuccess) }
     }
 
-    fun dealerClicked(dealer: String) { this.dealer = dealer }
+    fun dealerClicked(dealer: String) { clickedDealer.value = dealer }
 
     fun filteredBonds() {
         dealers.value?.let {
             when(it) {
-                is State.Success -> filteredBonds.success(it.data?.get(dealer) ?: emptyList())
+                is State.Success -> filteredBonds.success(it.data?.get(clickedDealer.value) ?: emptyList())
                 is State.Error -> filteredBonds.error(DealerFailure())
             }
         }
@@ -51,6 +51,7 @@ class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
                 return
             }
         }
+        dealers.error(failure)
         bonds.error(failure)
     }
 

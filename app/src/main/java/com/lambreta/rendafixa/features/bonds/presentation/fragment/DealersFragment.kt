@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.lambreta.rendafixa.R
 import com.lambreta.rendafixa.core.exception.Failure
 import com.lambreta.rendafixa.core.extension.gone
 import com.lambreta.rendafixa.core.extension.visible
