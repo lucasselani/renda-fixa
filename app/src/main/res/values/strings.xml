@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Encontre sua renda fixa</string>
+
+    <!--Bonds View Holder-->
+    <string name="interest">Juros</string>
+    <string name="maturity_date">Vencimento %1$s</string>
+    <string name="bond_price">%1$s por título</string>
+
+    <!--Snackbar-->
     <string name="ok">OK</string>
-    <string name="list_error">Opsss.. Aconteceu alguma coisa, tente novamente!</string>
-    <string name="no_internet">Parece que você está sem conexão com a internet :(</string>
+    <string name="list_error">Opsss.. Aconteceu alguma coisa, tente atualizar a página novamente!</string>
+    <string name="no_internet">Parece que você está sem conexão com a internet :( Exibindo últimos dados salvos!</string>
 </resources>
