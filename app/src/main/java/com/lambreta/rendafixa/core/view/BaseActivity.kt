@@ -9,7 +9,6 @@ import com.lambreta.rendafixa.R
 import com.lambreta.rendafixa.core.extension.inTransaction
 import com.google.android.material.snackbar.Snackbar
 
-
 /**
  * Base Activity class with helper methods for handling fragment transactions and back button
  * events.

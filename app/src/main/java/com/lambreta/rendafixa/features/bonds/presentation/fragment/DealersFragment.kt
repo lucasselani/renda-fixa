@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lambreta.rendafixa.R
 import com.lambreta.rendafixa.core.exception.Failure
 import com.lambreta.rendafixa.core.extension.gone
 import com.lambreta.rendafixa.core.extension.visible
@@ -19,7 +18,7 @@ import com.lambreta.rendafixa.features.bonds.presentation.adapter.DealersAdapter
 import com.lambreta.rendafixa.features.bonds.presentation.viewmodel.BondsViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class DealersFragment : BaseFragment() {
 
