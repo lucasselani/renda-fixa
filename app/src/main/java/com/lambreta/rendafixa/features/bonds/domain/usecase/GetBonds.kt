@@ -5,7 +5,7 @@ import com.lambreta.rendafixa.core.interactor.UseCase
 import com.lambreta.rendafixa.features.bonds.domain.model.Bond
 import com.lambreta.rendafixa.features.bonds.domain.repository.BondsRepository
 
-class GetBonds constructor(private val bondsRepository: BondsRepository) : UseCase<Map<String, List<Bond>>, None>() {
+class GetBonds constructor(private val bondsRepository: BondsRepository) : UseCase<List<Bond>, None>() {
 
     override suspend fun run(params: None) = bondsRepository.bonds()
 }

@@ -9,8 +9,6 @@ import java.util.*
 import com.lambreta.rendafixa.features.bonds.data.model.Bond as BondDataModel
 import com.lambreta.rendafixa.features.bonds.domain.model.Bond as BondDomainModel
 
-fun BondsResponse.groupByDealer(): Map<String, List<BondDomainModel>> = mapToList().groupBy { it.dealer }
-
 fun BondsResponse.mapToList(): List<BondDomainModel> {
     val bonds = arrayListOf<BondDomainModel>()
     this.bonds.forEach { bonds.add(it.mapTo()) }

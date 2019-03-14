@@ -5,88 +5,74 @@
         <variable name="bond"
                   type="com.lambreta.rendafixa.features.bonds.domain.model.Bond" />
     </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/rootView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
-        <androidx.cardview.widget.CardView
-                android:id="@+id/cardContainer"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/interest"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp">
+                app:layout_constraintStart_toStartOf="@+id/rate"
+                app:layout_constraintEnd_toEndOf="@+id/rate"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/interest"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/contentContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp">
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rate"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/interest"
+                android:background="@drawable/drawable_rounded_view"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@{bond.rate}"
+                tools:text="16,87%"/>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/interest"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="@+id/rate"
-                        app:layout_constraintEnd_toEndOf="@+id/rate"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:textSize="12sp"
-                        android:fontFamily="sans-serif-light"
-                        android:text="@string/interest"/>
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/rate"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                android:text='@{bond.dealer + " - " + bond.category}'
+                tools:text="Nova Futura - CDB"/>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/rate"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/interest"
-                        android:background="@drawable/drawable_rounded_view"
-                        android:gravity="center"
-                        android:textSize="16sp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="@{bond.rate}"
-                        tools:text="16,87%"/>
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/rate"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
+                android:text="@{@string/bond_price(bond.price)}"
+                tools:text="R$ 1.000,00 por título"/>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintLeft_toRightOf="@+id/rate"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:textSize="16sp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text='@{bond.dealer + " - " + bond.category}'
-                        tools:text="Nova Futura - CDB"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintLeft_toRightOf="@+id/rate"
-                        app:layout_constraintTop_toBottomOf="@+id/title"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="16dp"
-                        android:textSize="14sp"
-                        android:fontFamily="sans-serif"
-                        android:text="@{@string/bond_price(bond.price)}"
-                        tools:text="R$ 1.000,00 por título"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/maturity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintLeft_toLeftOf="@+id/price"
-                        app:layout_constraintTop_toBottomOf="@+id/price"
-                        android:layout_marginTop="4dp"
-                        android:textSize="12sp"
-                        android:fontFamily="sans-serif"
-                        android:text="@{@string/maturity_date(bond.maturityDate)}"
-                        tools:text="Vencimento 18/01/2026 às 12:00"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/maturity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@+id/price"
+                app:layout_constraintTop_toBottomOf="@+id/price"
+                android:layout_marginTop="4dp"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif"
+                android:text="@{@string/maturity_date(bond.maturityDate)}"
+                tools:text="Vencimento 18/01/2026 às 12:00"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

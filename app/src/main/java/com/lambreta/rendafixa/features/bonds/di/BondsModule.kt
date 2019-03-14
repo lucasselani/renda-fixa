@@ -1,5 +1,7 @@
 package com.lambreta.rendafixa.features.bonds.di
 
+import androidx.fragment.app.Fragment
+import com.lambreta.rendafixa.R
 import com.lambreta.rendafixa.core.platform.WebServiceHandler
 import com.lambreta.rendafixa.features.bonds.constants.baseUrl
 import com.lambreta.rendafixa.features.bonds.data.api.BondsApi
@@ -7,8 +9,8 @@ import com.lambreta.rendafixa.features.bonds.data.service.BondsService
 import com.lambreta.rendafixa.features.bonds.domain.repository.BondsRepository
 import com.lambreta.rendafixa.features.bonds.domain.usecase.GetBonds
 import com.lambreta.rendafixa.features.bonds.presentation.adapter.BondsAdapter
-import com.lambreta.rendafixa.features.bonds.presentation.adapter.DealersAdapter
-import com.lambreta.rendafixa.core.functional.OnViewInteraction
+import com.lambreta.rendafixa.features.bonds.presentation.enum.BondType
+import com.lambreta.rendafixa.features.bonds.presentation.fragment.BondsFragment
 import com.lambreta.rendafixa.features.bonds.presentation.viewmodel.BondsViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.koin.viewModel
@@ -30,6 +32,13 @@ val bondsModule = module {
 
 val viewModule = module {
     viewModel { BondsViewModel(get()) }
-    single { BondsAdapter() }
-    single { DealersAdapter() }
+    factory { BondsAdapter() }
+}
+
+val fragmentModule = module {
+    single<Map<Int, Fragment>> {
+        mapOf(R.string.cdi_fragment to BondsFragment.newInstance(BondType.CDI),
+            R.string.ipca_fragment to BondsFragment.newInstance(BondType.IPCA),
+            R.string.pre_index_fragment to BondsFragment.newInstance(BondType.PRE))
+    }
 }

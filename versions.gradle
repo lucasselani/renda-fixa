@@ -23,6 +23,7 @@ versions.mockito_all = "1.10.19"
 versions.mockito_android = "2.22.0"
 versions.junit = "4.12"
 versions.espresso = "3.1.0-alpha4"
+versions.navigation = "2.0.0-rc02"
 
 def deps = [:]
 
@@ -81,6 +82,13 @@ mockito.core = "org.mockito:mockito-core:$versions.mockito"
 mockito.all = "org.mockito:mockito-all:$versions.mockito_all"
 mockito.android = "org.mockito:mockito-android:$versions.mockito_android"
 deps.mockito = mockito
+
+def navigation = [:]
+navigation.runtime_ktx = "androidx.navigation:navigation-runtime-ktx:$versions.navigation"
+navigation.fragment_ktx = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+navigation.ui_ktx = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+navigation.safe_args_plugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+deps.navigation = navigation
 
 deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
 deps.timber = "com.jakewharton.timber:timber:$versions.timber"

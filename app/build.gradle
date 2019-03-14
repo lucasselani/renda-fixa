@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlinx-serialization'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -64,6 +65,10 @@ dependencies {
 
     implementation deps.kotlin.reflect
     implementation deps.kotlin.stdlib
+
+    implementation deps.navigation.runtime_ktx
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
 
     kapt deps.lifecycle.compiler
 

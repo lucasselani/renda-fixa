@@ -1,13 +1,24 @@
 <resources>
+    <!--View names-->
     <string name="app_name">Encontre sua renda fixa</string>
+    <string name="app_nickname">Renda Fixa</string>
+    <string name="cdi_fragment">CDI</string>
+    <string name="ipca_fragment">IPCA</string>
+    <string name="pre_index_fragment">Pré Indexado</string>
 
     <!--Bonds View Holder-->
     <string name="interest">Juros</string>
     <string name="maturity_date">Vencimento %1$s</string>
     <string name="bond_price">%1$s por título</string>
 
-    <!--Snackbar-->
+    <!--Snackbar and messages-->
     <string name="ok">OK</string>
     <string name="list_error">Opsss.. Aconteceu alguma coisa, tente atualizar a página novamente!</string>
-    <string name="no_internet">Parece que você está sem conexão com a internet :( Exibindo últimos dados salvos!</string>
+    <string name="no_internet">Parece que você está sem conexão com a internet! Exibindo últimos dados salvos!</string>
+    <string name="no_data">Nenhum dado disponível</string>
+
+    <!--Credits-->
+    <string name="app_icon_credit">
+        ![CDATA[<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>]]
+    </string>
 </resources>

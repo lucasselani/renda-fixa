@@ -25,7 +25,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:shimmer_duration="1000"
                 app:shimmer_auto_start="true"
-                android:visibility="visible">
+                android:visibility="gone">
 
             <!-- Adding 7 rows of placeholders -->
             <LinearLayout
@@ -46,6 +46,7 @@
                 android:id="@+id/swipeRefresh"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:visibility="visible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -53,9 +54,26 @@
 
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"/>
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="?attr/actionBarSize"/>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/noDataContainer"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/no_data"
+                android:textSize="24sp"
+                android:fontFamily="sans-serif-medium"
+                android:drawableTop="@mipmap/ic_launcher_bw"
+                android:drawablePadding="8dp"
+                android:visibility="gone"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

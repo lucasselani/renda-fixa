@@ -1,13 +1,12 @@
 package com.lambreta.rendafixa.core.view
 
 import android.view.View
-import androidx.annotation.IdRes
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.lambreta.rendafixa.R
-import com.lambreta.rendafixa.core.extension.inTransaction
 import com.google.android.material.snackbar.Snackbar
+import com.lambreta.rendafixa.R
+import kotlinx.android.synthetic.main.layout_appbar_tabs.*
 
 /**
  * Base Activity class with helper methods for handling fragment transactions and back button
@@ -17,16 +16,14 @@ import com.google.android.material.snackbar.Snackbar
  */
 abstract class BaseActivity : AppCompatActivity() {
 
-    protected fun addFragment(fragment: Fragment, @IdRes containerViewId: Int, tag: String? = null) =
-        supportFragmentManager.inTransaction { add(containerViewId, fragment, tag).addToBackStack(null) }
+    protected fun setupActionBar(@StringRes titleResourceId: Int? = null,
+                                 @DrawableRes iconResourceId: Int? = null) {
+        setSupportActionBar(toolbar)
+        titleResourceId?.let { toolbar.setTitle(it) }
+        iconResourceId?.let { toolbar.setNavigationIcon(it) }
+    }
 
-    protected fun replaceFragment(fragment: Fragment, @IdRes containerViewId: Int, tag: String? = null) =
-        supportFragmentManager.inTransaction{ replace(containerViewId, fragment, tag) }
-
-    protected fun removeFragment(fragment: Fragment) =
-        supportFragmentManager.inTransaction{ remove(fragment) }
-
-    fun showSnackbar(view: View,
+    fun showSnackbar(view: View = findViewById(android.R.id.content),
                      @StringRes textResourceId: Int,
                      @StringRes buttonResourceId: Int = R.string.ok,
                      duration: Int = Snackbar.LENGTH_LONG) {

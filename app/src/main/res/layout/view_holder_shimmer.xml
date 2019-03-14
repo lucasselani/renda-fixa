@@ -10,7 +10,7 @@
           android:layout_height="@dimen/placeholderImage"
           android:layout_marginRight="@dimen/activityPadding"
           android:layout_marginTop="@dimen/padding_10"
-          android:background="@color/background"/>
+          android:background="@color/gray"/>
 
     <LinearLayout android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -18,13 +18,18 @@
                   android:layout_marginTop="@dimen/padding_10"
                   android:orientation="vertical">
 
-        <View android:layout_width="100dp"
+        <View android:layout_width="200dp"
               android:layout_height="@dimen/placeholderTextHeight"
-              android:background="@color/background" />
+              android:background="@color/gray" />
 
-        <View android:layout_width="30dp"
+        <View android:layout_width="140dp"
               android:layout_height="@dimen/placeholderTextHeight"
               android:layout_marginTop="5dp"
-              android:background="@color/background" />
+              android:background="@color/gray" />
+
+        <View android:layout_width="80dp"
+              android:layout_height="@dimen/placeholderTextHeight"
+              android:layout_marginTop="5dp"
+              android:background="@color/gray" />
     </LinearLayout>
 </RelativeLayout>
