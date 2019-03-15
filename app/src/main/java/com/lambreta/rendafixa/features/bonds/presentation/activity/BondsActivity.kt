@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.layout_appbar_tabs.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class BondsMobActivity : BaseNavigationActivity() {
+class BondsActivity : BaseNavigationActivity() {
 
     private val viewModel: BondsViewModel by viewModel()
     private val fragmentsMap: Map<Int, Fragment> by inject()
