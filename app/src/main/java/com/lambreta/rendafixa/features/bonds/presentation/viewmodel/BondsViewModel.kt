@@ -10,7 +10,7 @@ import com.lambreta.rendafixa.core.functional.State
 import com.lambreta.rendafixa.core.view.BaseViewModel
 import com.lambreta.rendafixa.features.bonds.domain.model.Bond
 import com.lambreta.rendafixa.features.bonds.domain.usecase.GetBonds
-import com.lambreta.rendafixa.features.bonds.presentation.enum.BondType
+import com.lambreta.rendafixa.features.bonds.presentation.enums.BondType
 
 class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
 
@@ -20,12 +20,22 @@ class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
     var preIndexedBonds: MutableLiveData<State<List<Bond>>> = MutableLiveData()
 
     private var tryAgain: Boolean = true
+    private var loading: Boolean = false
 
     fun list() {
         cdiBonds.loading(true)
         ipcaBonds.loading(true)
         preIndexedBonds.loading(true)
-        getBonds(None) { it.either(::handleFailure, ::handleSuccess) }
+        getBonds()
+    }
+
+    fun listByType(type: BondType) {
+        when(type) {
+            BondType.CDI -> cdiBonds.loading(true)
+            BondType.IPCA -> ipcaBonds.loading(true)
+            BondType.PRE -> preIndexedBonds.loading(true)
+        }
+        getBonds()
     }
 
     private fun handleSuccess(data: List<Bond>?) {
@@ -49,5 +59,15 @@ class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
         cdiBonds.error(failure)
         ipcaBonds.error(failure)
         preIndexedBonds.error(failure)
+    }
+
+    private fun getBonds() {
+        if(!loading) {
+            loading = true
+            getBonds(None) {
+                loading = false
+                it.either(::handleFailure, ::handleSuccess)
+            }
+        }
     }
 }

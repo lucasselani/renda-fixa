@@ -12,6 +12,7 @@ data class Bond(
     var qualified: Boolean = false,
     var maturityDays: Long = 0,
     var maturityDate: String = "",
+    var simplifiedDate: String = "",
     var interest: Double = 0.0,
     var rate: String = "",
     var rating: String = "",

@@ -1,9 +1,12 @@
 package com.lambreta.rendafixa.features.bonds.data.mapper
 
 import com.lambreta.rendafixa.core.extension.capitalizeFirstOfEachWord
+import com.lambreta.rendafixa.core.extension.isoDateToBr
+import com.lambreta.rendafixa.core.extension.isoDateToSimplified
 import com.lambreta.rendafixa.features.bonds.data.response.BondsResponse
-import com.lambreta.rendafixa.features.bonds.util.brDateFormat
-import com.lambreta.rendafixa.features.bonds.util.isoDateFormat
+import com.lambreta.rendafixa.core.util.brDateFormat
+import com.lambreta.rendafixa.core.util.isoDateFormat
+import com.lambreta.rendafixa.core.util.minDateFormat
 import java.text.NumberFormat
 import java.util.*
 import com.lambreta.rendafixa.features.bonds.data.model.Bond as BondDataModel
@@ -27,7 +30,8 @@ fun BondDataModel.mapTo(): BondDomainModel =
             qualified = if (it is Boolean) it else false
         }
         maturityDays = this@mapTo.maturityDays
-        maturityDate = brDateFormat.format(isoDateFormat.parse(this@mapTo.maturityDate))
+        maturityDate = this@mapTo.maturityDate.isoDateToBr()
+        simplifiedDate = this@mapTo.maturityDate.isoDateToSimplified()
         interest = this@mapTo.interest
         rate = this@mapTo.rate.replace(".", ",")
         rating = this@mapTo.rating

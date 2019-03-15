@@ -5,13 +5,16 @@
     <data>
         <variable name="viewModel"
                   type="com.lambreta.rendafixa.features.bonds.presentation.viewmodel.BondsViewModel" />
+        <variable name="bondType"
+                  type="com.lambreta.rendafixa.features.bonds.presentation.enums.BondType" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/rootView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".features.bonds.presentation.activity.BondsActivity">
+            tools:context=".features.bonds.presentation.activity.BondsMobActivity">
 
         <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer"
@@ -50,7 +53,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:onRefreshListener="@{() -> viewModel.list()}">
+                app:onRefreshListener="@{() -> viewModel.listByType(bondType)}">
 
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"

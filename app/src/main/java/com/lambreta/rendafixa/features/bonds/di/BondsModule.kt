@@ -9,7 +9,7 @@ import com.lambreta.rendafixa.features.bonds.data.service.BondsService
 import com.lambreta.rendafixa.features.bonds.domain.repository.BondsRepository
 import com.lambreta.rendafixa.features.bonds.domain.usecase.GetBonds
 import com.lambreta.rendafixa.features.bonds.presentation.adapter.BondsAdapter
-import com.lambreta.rendafixa.features.bonds.presentation.enum.BondType
+import com.lambreta.rendafixa.features.bonds.presentation.enums.BondType
 import com.lambreta.rendafixa.features.bonds.presentation.fragment.BondsFragment
 import com.lambreta.rendafixa.features.bonds.presentation.viewmodel.BondsViewModel
 import org.koin.android.ext.koin.androidContext

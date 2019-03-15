@@ -7,7 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".features.bonds.presentation.activity.BondsActivity">
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:background="@color/background"
+        tools:context=".features.bonds.presentation.activity.BondsMobActivity">
 
     <include layout="@layout/layout_appbar_tabs"
             android:id="@+id/appbar_tabs"

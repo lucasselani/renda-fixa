@@ -24,6 +24,8 @@ versions.mockito_android = "2.22.0"
 versions.junit = "4.12"
 versions.espresso = "3.1.0-alpha4"
 versions.navigation = "2.0.0-rc02"
+versions.google_play_base = "16.1.0"
+versions.google_play_ad = "17.2.0"
 
 def deps = [:]
 
@@ -97,6 +99,8 @@ deps.serialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$versi
 deps.coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
 deps.shimmer = "com.facebook.shimmer:shimmer:$versions.shimmer"
 deps.junit = "junit:junit:$versions.junit"
+deps.google_play = "com.google.android.gms:play-services-base:$versions.google_play_base"
+deps.google_play_ads = "com.google.android.gms:play-services-ads:$versions.google_play_ad"
 
 def build_versions = [:]
 build_versions.min_sdk = 21
@@ -106,7 +110,7 @@ ext.build_versions = build_versions
 
 ext.deps = deps
 
-def addRepos(RepositoryHandler handler) {
+static def addRepos(RepositoryHandler handler) {
     handler.google()
     handler.jcenter()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }

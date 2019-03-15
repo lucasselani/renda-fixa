@@ -1,4 +1,4 @@
-package com.lambreta.rendafixa.features.bonds.presentation.enum
+package com.lambreta.rendafixa.features.bonds.presentation.enums
 
 enum class BondType {
     CDI,

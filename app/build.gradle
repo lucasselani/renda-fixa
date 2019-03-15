@@ -57,6 +57,7 @@ dependencies {
     implementation deps.serialization
     implementation deps.constraint_layout
     implementation deps.timber
+    implementation deps.google_play_ads
 
     implementation deps.koin.core
     implementation deps.koin.ext

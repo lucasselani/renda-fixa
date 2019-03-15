@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lambreta.rendafixa.R
 import com.lambreta.rendafixa.core.extension.gone
@@ -16,7 +15,7 @@ import com.lambreta.rendafixa.core.view.BaseFragment
 import com.lambreta.rendafixa.databinding.FragmentBondsBinding
 import com.lambreta.rendafixa.features.bonds.domain.model.Bond
 import com.lambreta.rendafixa.features.bonds.presentation.adapter.BondsAdapter
-import com.lambreta.rendafixa.features.bonds.presentation.enum.BondType
+import com.lambreta.rendafixa.features.bonds.presentation.enums.BondType
 import com.lambreta.rendafixa.features.bonds.presentation.viewmodel.BondsViewModel
 import kotlinx.android.synthetic.main.fragment_bonds.*
 import org.koin.android.ext.android.inject
@@ -37,6 +36,7 @@ class BondsFragment : BaseFragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_bonds, container,false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.bondType = type
         return binding.root
     }
 
@@ -51,7 +51,6 @@ class BondsFragment : BaseFragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
-        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
     }
 
     private fun setupViewModel() {
