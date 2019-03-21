@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="bond"
+                  type="com.lambreta.rendafixa.features.bonds.domain.model.Bond" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:background="@android:color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/rootView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/interest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/rate"
+                    app:layout_constraintEnd_toEndOf="@+id/rate"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/interest"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/rate"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/interest"
+                    android:background="@drawable/drawable_rounded_view"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@{bond.rate}"
+                    tools:text="16,87%"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@+id/rate"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="16sp"
+                    android:layout_marginStart="24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text='@{bond.category}'
+                    tools:text="CDB"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@+id/category"
+                    app:layout_constraintTop_toBottomOf="@+id/category"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text='@{bond.dealer + " " + bond.category + " - " + bond.simplifiedDate}'
+                    tools:text="Nova Futura CDB - 01/26"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/minApplication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@+id/category"
+                    app:layout_constraintTop_toBottomOf="@+id/title"
+                    android:layout_marginTop="4dp"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/bond_price"
+                    tools:text="Aplicação mínima"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@+id/category"
+                    app:layout_constraintTop_toBottomOf="@+id/minApplication"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@{bond.price}"
+                    tools:text="R$ 1.000,00"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

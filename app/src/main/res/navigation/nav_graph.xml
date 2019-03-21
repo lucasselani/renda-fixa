@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph">
+
+<!--    <fragment
+            android:id="@+id/dealersFragment"
+            android:name="com.lambreta.rendafixa.features.bonds.presentation.fragment.DealersFragment"
+            android:label="@string/dealers_fragment"
+            tools:layout="@layout/fragment_dealers">
+        <action
+                android:id="@+id/dealers_to_bonds"
+                app:destination="@+id/bondsFragment"/>
+    </fragment>
+
+    <fragment
+            android:id="@+id/bondsFragment"
+            android:name="com.lambreta.rendafixa.features.bonds.presentation.fragment.BondsFragment"
+            android:label="@string/bonds_fragment"
+            tools:layout="@layout/fragment_dealers">
+    </fragment>-->
+</navigation>
