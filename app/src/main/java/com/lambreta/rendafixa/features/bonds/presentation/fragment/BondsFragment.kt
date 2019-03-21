@@ -11,7 +11,7 @@ import com.lambreta.rendafixa.R
 import com.lambreta.rendafixa.core.extension.gone
 import com.lambreta.rendafixa.core.extension.visible
 import com.lambreta.rendafixa.core.functional.State
-import com.lambreta.rendafixa.core.view.BaseFragment
+import com.lambreta.rendafixa.core.view.fragment.BaseFragment
 import com.lambreta.rendafixa.databinding.FragmentBondsBinding
 import com.lambreta.rendafixa.features.bonds.domain.model.Bond
 import com.lambreta.rendafixa.features.bonds.presentation.adapter.BondsAdapter

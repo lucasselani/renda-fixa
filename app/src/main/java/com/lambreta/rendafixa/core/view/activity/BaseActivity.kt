@@ -1,4 +1,4 @@
-package com.lambreta.rendafixa.core.view
+package com.lambreta.rendafixa.core.view.activity
 
 import android.view.View
 import androidx.annotation.DrawableRes

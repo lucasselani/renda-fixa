@@ -7,10 +7,11 @@ import com.lambreta.rendafixa.core.extension.loading
 import com.lambreta.rendafixa.core.extension.success
 import com.lambreta.rendafixa.core.functional.None
 import com.lambreta.rendafixa.core.functional.State
-import com.lambreta.rendafixa.core.view.BaseViewModel
+import com.lambreta.rendafixa.core.view.viewmodel.BaseViewModel
 import com.lambreta.rendafixa.features.bonds.domain.model.Bond
 import com.lambreta.rendafixa.features.bonds.domain.usecase.GetBonds
 import com.lambreta.rendafixa.features.bonds.presentation.enums.BondType
+import com.lambreta.rendafixa.features.bonds.presentation.enums.SortType
 
 class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
 
@@ -23,9 +24,7 @@ class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
     private var loading: Boolean = false
 
     fun list() {
-        cdiBonds.loading(true)
-        ipcaBonds.loading(true)
-        preIndexedBonds.loading(true)
+        loadAll()
         getBonds()
     }
 
@@ -36,6 +35,22 @@ class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
             BondType.PRE -> preIndexedBonds.loading(true)
         }
         getBonds()
+    }
+
+    fun sortByType(type: SortType?) {
+        loadAll()
+        when(type) {
+            SortType.INTEREST -> sort(compareByDescending { it.interest })
+            SortType.MATURITYDATE -> sort(compareBy { it.maturityDays })
+            SortType.MINAPPLICATION -> sort(compareBy { it.unitPrice })
+            SortType.NAME -> sort(compareBy { it.dealer })
+        }
+    }
+
+    private fun sort(sorting: Comparator<Bond>) {
+        cdiBonds.success(bonds[BondType.CDI.value]?.sortedWith(sorting))
+        ipcaBonds.success(bonds[BondType.IPCA.value]?.sortedWith(sorting))
+        preIndexedBonds.success(bonds[BondType.PRE.value]?.sortedWith(sorting))
     }
 
     private fun handleSuccess(data: List<Bond>?) {
@@ -59,6 +74,12 @@ class BondsViewModel(private val getBonds: GetBonds) : BaseViewModel() {
         cdiBonds.error(failure)
         ipcaBonds.error(failure)
         preIndexedBonds.error(failure)
+    }
+
+    private fun loadAll() {
+        cdiBonds.loading(true)
+        ipcaBonds.loading(true)
+        preIndexedBonds.loading(true)
     }
 
     private fun getBonds() {

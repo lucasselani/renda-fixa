@@ -5,6 +5,7 @@
     <string name="cdi_fragment">CDI</string>
     <string name="ipca_fragment">IPCA</string>
     <string name="pre_index_fragment">Pré Indexado</string>
+    <string name="menu_sort">Ordenar</string>
 
     <!--Bonds View Holder-->
     <string name="interest">Taxa</string>

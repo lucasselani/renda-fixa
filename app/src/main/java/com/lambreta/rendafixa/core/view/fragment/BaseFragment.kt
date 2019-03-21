@@ -1,8 +1,9 @@
-package com.lambreta.rendafixa.core.view
+package com.lambreta.rendafixa.core.view.fragment
 
 import androidx.fragment.app.Fragment
 import com.lambreta.rendafixa.R
 import com.lambreta.rendafixa.core.exception.Failure
+import com.lambreta.rendafixa.core.view.activity.BaseActivity
 
 abstract class BaseFragment : Fragment() {
 

@@ -4,9 +4,6 @@ import com.lambreta.rendafixa.core.extension.capitalizeFirstOfEachWord
 import com.lambreta.rendafixa.core.extension.isoDateToBr
 import com.lambreta.rendafixa.core.extension.isoDateToSimplified
 import com.lambreta.rendafixa.features.bonds.data.response.BondsResponse
-import com.lambreta.rendafixa.core.util.brDateFormat
-import com.lambreta.rendafixa.core.util.isoDateFormat
-import com.lambreta.rendafixa.core.util.minDateFormat
 import java.text.NumberFormat
 import java.util.*
 import com.lambreta.rendafixa.features.bonds.data.model.Bond as BondDataModel

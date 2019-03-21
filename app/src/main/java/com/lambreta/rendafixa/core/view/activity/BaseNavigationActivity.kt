@@ -1,4 +1,4 @@
-package com.lambreta.rendafixa.core.view
+package com.lambreta.rendafixa.core.view.activity
 
 import androidx.annotation.IdRes
 import androidx.core.view.GravityCompat

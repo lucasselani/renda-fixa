@@ -1,4 +1,4 @@
-package com.lambreta.rendafixa.core.view
+package com.lambreta.rendafixa.core.view.activity
 
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest

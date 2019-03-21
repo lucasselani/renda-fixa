@@ -26,6 +26,7 @@ versions.espresso = "3.1.0-alpha4"
 versions.navigation = "2.0.0-rc02"
 versions.google_play_base = "16.1.0"
 versions.google_play_ad = "17.2.0"
+versions.anko = "0.10.8"
 
 def deps = [:]
 
@@ -91,6 +92,16 @@ navigation.fragment_ktx = "androidx.navigation:navigation-fragment-ktx:$versions
 navigation.ui_ktx = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
 navigation.safe_args_plugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
 deps.navigation = navigation
+
+def anko = [:]
+anko.commons = "org.jetbrains.anko:anko-commons:$versions.anko"
+anko.constraint = "org.jetbrains.anko:anko-constraint-layout:$versions.anko"
+anko.layout_sdk = "org.jetbrains.anko:anko-sdk25:$versions.anko"
+anko.layout_appcompat = "org.jetbrains.anko:anko-appcompat-v7:$versions.anko"
+anko.coroutines_sdk = "org.jetbrains.anko:anko-sdk25-coroutines:$versions.anko"
+anko.coroutines_appcompat = "org.jetbrains.anko:anko-appcompat-v7-coroutines:$versions.anko"
+anko.sqlite = "org.jetbrains.anko:anko-sqlite:$versions.anko"
+deps.anko = anko
 
 deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
 deps.timber = "com.jakewharton.timber:timber:$versions.timber"

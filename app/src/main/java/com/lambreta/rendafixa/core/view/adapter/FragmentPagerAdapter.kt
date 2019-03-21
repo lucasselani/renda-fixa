@@ -1,4 +1,4 @@
-package com.lambreta.rendafixa.core.adapter
+package com.lambreta.rendafixa.core.view.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

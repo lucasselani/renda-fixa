@@ -1,9 +1,11 @@
 package com.lambreta.rendafixa.core.extension
 
-import com.lambreta.rendafixa.core.util.brDateFormat
-import com.lambreta.rendafixa.core.util.isoDateFormat
-import com.lambreta.rendafixa.core.util.minDateFormat
-import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
+
+val isoDateFormat = SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS'Z'", Locale.US)
+val brDateFormat = SimpleDateFormat("dd/MM/yyyy' às 'hh:mm", Locale.US)
+val minDateFormat = SimpleDateFormat("MM/yy", Locale.US)
 
 fun String.capitalizeFirstOfEachWord() =
     this.toLowerCase()
