@@ -24,7 +24,7 @@
     </string>
 
     <!--Keys-->
-    <string name="admob_key">ca-app-pub-5028632772513683~1312312326</string>
-    <string name="admob_interstitial_key">ca-app-pub-5028632772513683/8232943899</string>
+    <string name="admob_key">ca-app-pub-5028632772513683~7800871696</string>
+    <string name="admob_interstitial_key">ca-app-pub-5028632772513683/2477033457</string>
     <string name="admob_test_key">ca-app-pub-3940256099942544/1033173712</string>
 </resources>
